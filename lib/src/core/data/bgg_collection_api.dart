@@ -1,6 +1,3 @@
-// ignore_for_file: duplicate_import
-
-import 'package:dio/dio.dart';
 import 'package:dio/dio.dart';
 
 import '../../core/config/bgg_config.dart';
@@ -14,11 +11,13 @@ class BggCollectionApi {
   /// If no Dio client is provided, a default one will be created with the
   BggCollectionApi({Dio? dio})
       : _dio = dio ??
-            Dio(BaseOptions(
-              baseUrl: BggConfig.baseUrl,
-              connectTimeout: BggConfig.connectTimeout,
-              receiveTimeout: BggConfig.receiveTimeout,
-            ));
+            Dio(
+              BaseOptions(
+                baseUrl: BggConfig.baseUrl,
+                connectTimeout: BggConfig.connectTimeout,
+                receiveTimeout: BggConfig.receiveTimeout,
+              ),
+            );
 
   /// Fetches the raw XML string of a user's board game collection.
   ///
@@ -35,8 +34,8 @@ class BggCollectionApi {
     try {
       final queryParams = <String, dynamic>{
         'username': userName,
-        'own': own ? 1 : 0,
-        'wishlist': wishlist ? 1 : 0,
+        if (own) 'own': '1',
+        if (wishlist) 'wishlist': '1',
       };
 
       final response = await _dio.get<String>(
@@ -48,7 +47,10 @@ class BggCollectionApi {
         // 202 = Accepted but not ready yet
         await Future.delayed(const Duration(seconds: 2));
         return fetchCollection(
-            userName: userName, own: own, wishlist: wishlist);
+          userName: userName,
+          own: own,
+          wishlist: wishlist,
+        );
       }
 
       if (response.statusCode == 200 && response.data != null) {
@@ -57,8 +59,7 @@ class BggCollectionApi {
         throw BggServerException(response.statusCode);
       }
     } on DioException catch (e) {
-      if (e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout) {
+      if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
         throw BggTimeoutException();
       }
       throw BggException('Dio error: ${e.message}');

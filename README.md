@@ -2,13 +2,12 @@
 
 A lightweight Dart client for accessing the [BoardGameGeek XML API2](https://boardgamegeek.com/wiki/page/BGG_XML_API2).
 
-This package provides simple tools to fetch and parse BoardGameGeek user collections, with network error handling and XML parsing built-in.
+This package provides simple tools to fetch and parse BoardGameGeek API, with network error handling and XML parsing built-in.
 
 ## Features
 
 - Fetch user collections from BoardGameGeek.
-- Parse XML responses into Dart objects.
-- Handle API retries and errors gracefully.
+- Search BGG for games
 
 ## Installation
 
@@ -26,23 +25,32 @@ flutter pub get
 
 ## Usage
 
-Here’s an example of how to use the CollectionRepository to fetch a user’s collection:
+Here’s an example of how to use the BggClient to fetch a user’s collection or search for a game:
 
 ```dart
 import 'package:bggapi/bggapi.dart';
 
 void main() async {
-  final api = BggCollectionApi();
-  final repository = CollectionRepository(api: api);
+  final client = BggClient(); 
 
   try {
-    final collection = await repository.getCollection(userName: 'testuser');
-    print('Total items: ${collection.totalItems}');
-    for (var item in collection.items) {
-      print('Item ID: ${item.objectId}');
+    final collection = await client.getCollection(userName: 'username');
+    for (final item in collection.items) {
+      print('${item.name} (${item.yearPublished}) - Played ${item.numPlays} times');
     }
+  } on BggTimeoutException {
+    print('Request timed out.');
+  } on BggServerException catch (e) {
+    print('Server error: ${e.message}');
+  } on BggParsingException {
+    print('Failed to parse XML response.');
   } catch (e) {
-    print('Error fetching collection: $e');
+    print('Unexpected error: $e');
+  }
+
+  final results = await client.search(query: 'Catan');
+  for (var r in results.items) {
+    print('${r.name} (ID: ${r.id}) – published ${r.yearPublished}');
   }
 }
 ```

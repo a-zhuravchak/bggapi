@@ -13,10 +13,19 @@ class BggTimeoutException extends BggException {
 }
 
 class BggServerException extends BggException {
-  BggServerException(int? statusCode)
-      : super('Server error with status code: $statusCode');
+  BggServerException(int? statusCode) : super('Server error with status code: $statusCode');
 }
 
 class BggParsingException extends BggException {
   BggParsingException() : super('Failed to parse XML response.');
+}
+
+/// Thrown when the BGG API request is still processing (HTTP 202).
+class BggRequestPendingException extends BggException {
+  BggRequestPendingException() : super('Request is still processing (HTTP 202).');
+}
+
+/// Thrown when a network error occurs during the BGG API request.
+class BggNetworkException extends BggException {
+  BggNetworkException(super.message);
 }
