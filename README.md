@@ -15,7 +15,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  bggapi: ^0.0.1
+  bgg_flutter_client: ^0.0.1
 ```
 
 Then run:
