@@ -1,6 +1,6 @@
 name: bgg_flutter_client
 description: "A lightweight Dart client for the BoardGameGeek XML API2."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/a-zhuravchak/bggapi
 environment:
   sdk: ^3.6.0
