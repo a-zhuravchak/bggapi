@@ -54,9 +54,11 @@ void main() async {
   }
 }
 ```
+## License
+This project is licensed under the MIT License—see the LICENSE file for details.
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## 📜 BGG XML API Terms of Use
+
+This client uses the BoardGameGeek XML API2.  
+By using this package, you agree to BGG’s [Terms of Use](https://boardgamegeek.com/wiki/page/XML_API_Terms_of_Use#).
