@@ -15,7 +15,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  bggapi: ^1.0.0
+  bggapi: ^0.0.1
 ```
 
 Then run:

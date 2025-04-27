@@ -1,11 +1,12 @@
 name: bggapi
 description: "A lightweight Dart client for the BoardGameGeek XML API2."
 version: 0.0.1
-homepage:
-
+homepage: https://github.com/a-zhuravchak/bggapi
 environment:
   sdk: ^3.6.0
   flutter: ">=1.17.0"
+
+repository: https://github.com/a-zhuravchak/bggapi
 
 dependencies:
   dio: ^5.8.0+1
