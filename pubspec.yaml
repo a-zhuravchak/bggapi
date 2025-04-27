@@ -7,12 +7,12 @@ environment:
   flutter: ">=1.17.0"
 
 repository: https://github.com/a-zhuravchak/bggapi
+license: BSD-3-Clause
 
 dependencies:
   dio: ^5.8.0+1
   flutter:
     sdk: flutter
-  runner: ^1.0.0
   xml: ^6.5.0
 
 dev_dependencies:
@@ -22,6 +22,9 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   mockito: ^5.4.5
   test: ^1.25.8
+
+example:
+  directory: example
 
 flutter:
 
