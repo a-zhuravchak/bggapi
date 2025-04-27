@@ -1,14 +1,13 @@
-import 'package:bggapi/src/core/exceptions/bgg_exceptions.dart';
 import 'package:xml/xml.dart';
 
 import '../../data/bgg_collection_api.dart';
 import '../../data/models/collection.dart';
+import '../../exceptions/bgg_exceptions.dart';
 
 class CollectionRepository {
   final BggCollectionApi _api;
 
-  CollectionRepository({BggCollectionApi? api})
-      : _api = api ?? BggCollectionApi();
+  CollectionRepository({BggCollectionApi? api}) : _api = api ?? BggCollectionApi();
 
   Future<Collection> getCollection({
     required String userName,

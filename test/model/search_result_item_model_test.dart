@@ -1,4 +1,4 @@
-import 'package:bggapi/bgg_flutter_client.dart';
+import 'package:bgg_flutter_client/bgg_flutter_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xml/xml.dart';
 

@@ -1,5 +1,5 @@
-import 'package:bggapi/bgg_flutter_client.dart';
-import 'package:bggapi/src/core/exceptions/bgg_exceptions.dart';
+import 'package:bgg_flutter_client/bgg_flutter_client.dart';
+import 'package:bgg_flutter_client/src/core/exceptions/bgg_exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
