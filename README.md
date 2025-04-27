@@ -55,8 +55,8 @@ void main() async {
 }
 ```
 ## License
-This project is licensed under the MIT License—see the LICENSE file for details.
-
+BSD-3-Clause “New” or “Revised” License  
+See the [LICENSE](LICENSE) file for details.
 
 ## 📜 BGG XML API Terms of Use
 
