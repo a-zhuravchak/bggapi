@@ -38,9 +38,22 @@ class BggClient {
         wishlist: wishlist,
       );
 
+  /// Searches BoardGameGeek for items matching [query].
+  ///
+  /// [query] is the text to search for; it may be a full or partial game name.
+  /// [type] filters the “thing” type (e.g. `'boardgame'`, `'videogame'`, `'rpg'`).
+  /// Defaults to `'boardgame'`.
+  ///
+  /// Throws:
+  /// - [BggRequestPendingException] if the API returns HTTP 202 (indicating the request is still being processed).
+  /// - [BggNetworkException] on network or Dio-level errors.
+  /// - [BggParsingException] if the XML response cannot be parsed.
+  ///
+  /// Returns a [Future] that completes with a [SearchResults] containing all matched items.
+
   Future<SearchResults> search({
     required String query,
-    String? type,
+    String? type = 'boardgame',
   }) =>
       _searchRepository.search(query: query, type: type);
 }

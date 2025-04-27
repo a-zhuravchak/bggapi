@@ -19,7 +19,7 @@ class SearchRepository {
   /// - [BggParsingException] on XML parse errors
   Future<SearchResults> search({
     required String query,
-    String? type = 'boardgame',
+    String? type,
   }) async {
     try {
       final xmlString = await _api.fetchSearch(query: query, type: type);
